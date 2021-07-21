@@ -1,11 +1,19 @@
 import {
+  Button,
   useDisclosure,
+  useTheme,
+  useBreakpoint,
+  IconButton,
+  HStack,
+  Box
 } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import React from "react";
-import AppNavigation from "./navigation"
-import {
- 
-} from "@chakra-ui/icons";
+import AppNavigation from "./navigation";
+import { Container, Row, Col } from "react-grid-system";
+import Header from "./header";
+import RoutesArea from "./routesArea";
+import { } from "@chakra-ui/icons";
 
 interface PathItem {
   label: string;
@@ -13,32 +21,45 @@ interface PathItem {
 }
 
 type NavigationRootPathType = PathItem & { children?: PathItem[] };
-const Uunc: React.FC<{}> = ({}) => {
-  const { isOpen, onOpen, onClose } = useDisclosure({ isOpen: true });
+const Uunc: React.FC<{}> = ({ }) => {
+  const appTheme = useTheme();
+  const breakpoint = useBreakpoint();
+  let [drawerOpen, updateDrawer] = React.useState(false);
+
   // const btnRef:React.RefObject<HTMLButtonElement> | undefined | null = React.useRef<HTMLButtonElement>()
 
-  
+  console.log(breakpoint);
+
+  let containerStyle = {
+    marginLeft: "320px",
+    width: "calc(100% - 320px)",
+  };
+
+  if (breakpoint == "base" || breakpoint == "sm" || breakpoint == "xs" || breakpoint == "md") {
+    containerStyle = { ...containerStyle, width: "100%", marginLeft: "0px" };
+  }
+
   return (
     <div>
-      <AppNavigation/>
+      <AppNavigation drawerOpen={drawerOpen} closeDrawer={() => {
+        updateDrawer(false);
+      }} />
+      <Box
+        style={{
+          ...containerStyle,
+        }}
+      >
+        <Header toggleDrawer={() => {
+          updateDrawer(!drawerOpen)
+        }} />
 
-      <div style={{
-        position:"absolute",
-        top:0,
-        left:296,
-        width:"calc(100vw - 296px )",
-        height:"100vh",
-        background:"orange"
-      }}>
+        <React.Fragment>
+          <RoutesArea />
+        </React.Fragment>
 
-        <div>
-          
-        </div>
-
-      </div>
-
+      </Box >
     </div>
-  )
+  );
 };
 
 export default Uunc;
