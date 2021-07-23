@@ -10,7 +10,7 @@ import LabActivity from "../modules/lab"
 import GuideActivity from "../modules/guide"
 const Screen: React.FC<{}> = () => {
 
-    return <div >
+    return <div style={{backgroundColor:"#F7F7F7"}}>
         <Switch>
             <Route path="/bridge" component={BridgeActivity} />
             <Route path="/farming" component={FarmingActivity} />

@@ -40,7 +40,7 @@ const Uunc: React.FC<{}> = ({ }) => {
   }
 
   return (
-    <div style={{background:"#F8F8F8"}}>
+    <div style={{background:""}}>
       <AppNavigation drawerOpen={drawerOpen} closeDrawer={() => {
         updateDrawer(false);
       }} />

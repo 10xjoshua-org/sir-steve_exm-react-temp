@@ -14,7 +14,6 @@ const Screen: React.FC<{}> = () => {
         setTabIndex(index)
     }
 
-
     const guides = ['Staking', 'Create Pool', 'Bridge', 'Others']
 
     return (
@@ -33,16 +32,16 @@ const Screen: React.FC<{}> = () => {
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <p>one!</p>
+                            <StakingGuide />
                         </TabPanel>
                         <TabPanel>
-                            <p>two!</p>
+
                         </TabPanel>
                         <TabPanel>
-                            <p>one!</p>
+
                         </TabPanel>
                         <TabPanel>
-                            <p>two!</p>
+
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
@@ -52,6 +51,15 @@ const Screen: React.FC<{}> = () => {
     );
 }
 
-export default Screen
 
+function StakingGuide() {
+    const link = "https://www.youtube.com/watch?v=AS_8_C5fTOE";
+
+    // Stacking guide goes here
+    return <Box>
+
+    </Box>
+}
+
+export default Screen
 

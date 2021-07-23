@@ -19,6 +19,7 @@ interface PathItem {
 }
 
 type NavigationRootPathType = PathItem & { children?: PathItem[] };
+
 const Uunc: React.FC<{ toggleDrawer: () => void }> = ({ toggleDrawer }) => {
 
     const breakpoint = useBreakpoint();
@@ -33,7 +34,7 @@ const Uunc: React.FC<{ toggleDrawer: () => void }> = ({ toggleDrawer }) => {
     }
 
     return (
-        <div style={{ padding: "16px 24px", margin: 0 }}>
+        <div style={{ padding: "16px 24px", margin: 0, borderBottom: "1px solid rgba(200,200,200,.2)" }}>
             <div>
                 <HStack justify="space-between">
                     <IconButton icon={<HamburgerIcon />} aria-label="dropdown"
