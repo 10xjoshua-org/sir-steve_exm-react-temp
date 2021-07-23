@@ -15,18 +15,18 @@ const Screen: React.FC<{}> = () => {
                 <Box py="24px">
                     <Flex direction={{base:"column", md:"row"}}>
                         <Box flex={1} as={Flex} p="24px" rounded="12px" background="#EDEDED">
-                            <IoIosWallet size={64} color="#487457" style={{ marginRight: 12 }} />
+                            <IoIosWallet size={48} color="#487457" style={{ marginRight: 12 }} />
                             <Flex direction="column" >
                                 <Text>My Balance</Text>
-                                <Text color="gray" fontSize="2xl">0 TOKEN</Text>
+                                <Text color="gray" fontSize="lg">0 TOKEN</Text>
                             </Flex>
                         </Box>
                         <Box w="12px" boxSize="12" />
                         <Box flex={1} as={Flex} p="24px" rounded="12px" background="#EDEDED">
-                            <IoIosCash size={64} color="#487457" style={{ marginRight: 12 }} />
+                            <IoIosCash size={48} color="#487457" style={{ marginRight: 12 }} />
                             <Flex direction="column" >
                                 <Text>Pool Fee</Text>
-                                <Text color="gray" fontSize="2xl">0 TOKEN</Text>
+                                <Text color="gray" fontSize="lg">0 TOKEN</Text>
                             </Flex>
                         </Box>
                     </Flex>

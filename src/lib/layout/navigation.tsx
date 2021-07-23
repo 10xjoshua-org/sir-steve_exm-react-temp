@@ -10,7 +10,8 @@ import {
   Text,
   IconButton,
   Box,
-  DrawerCloseButton
+  DrawerCloseButton,
+  Heading
 } from "@chakra-ui/react";
 import { Visible } from "react-grid-system"
 import React, { ReactSVG } from "react";
@@ -88,6 +89,7 @@ const Uunc: React.FC<{ drawerOpen: boolean, closeDrawer: () => void }> = ({ draw
       {NavigationList.map((v) => {
         return (
           <Box
+            background="grey"
             onClick={() => {
               history.push(v.path);
             }}
@@ -123,36 +125,36 @@ const Uunc: React.FC<{ drawerOpen: boolean, closeDrawer: () => void }> = ({ draw
   )
 
 
+  const DesktopDContent = (
+    <Box w="320px"
+      h="100vh"
+      borderRight="1px solid rgba(200,200,200,.2)"
+      pos="fixed"
+      left="0"
+      display="flex"
+      flexDirection="column"
+      top="0">
+      <Box p="16px 24px">
+        <Heading fontSize="2xl">  #Project name</Heading>
+      </Box>
+
+      <Box flex="1" p="16px 24px">
+        {NavPathsHere}
+      </Box>
+      <Box p="16px 24px" display="flex" alignItems="center">
+        <Divider style={{ flex: 1, marginRight: 12 }} />
+        <IconButton aria-label="icon">
+          <MoonIcon />
+        </IconButton>
+      </Box>
+    </Box>
+  )
+
+
   return (
     <>
       <Visible lg xl xxl>
-        <Drawer
-          isOpen={true}
-          placement="left"
-          onClose={onClose}
-          autoFocus={false}
-          lockFocusAcrossFrames={false}
-          blockScrollOnMount={false}
-          size="xs"
-        // finalFocusRef={btnRef}
-        >
-          {/* <DrawerOverlay /> */}
-          <DrawerContent>
-            {/* <DrawerCloseButton /> */}
-            <DrawerHeader>#Project name</DrawerHeader>
-
-            <DrawerBody>
-              {NavPathsHere}
-            </DrawerBody>
-
-            <DrawerFooter>
-              <Divider style={{ flex: 1, marginRight: 12 }} />
-              <IconButton aria-label="icon">
-                <MoonIcon />
-              </IconButton>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
+        {DesktopDContent}
       </Visible>
 
       <Visible xs sm md >

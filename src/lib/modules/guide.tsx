@@ -9,19 +9,42 @@ import { AppPageCoverSection } from '../components/pageCoverSection';
 
 
 const Screen: React.FC<{}> = () => {
+    const [tabIndex, setTabIndex] = React.useState(0)
+    const handleTabsChange = (index: number) => {
+        setTabIndex(index)
+    }
+
+
+    const guides = ['Staking', 'Create Pool', 'Bridge', 'Others']
+
     return (
         <div style={{ overflow: "auto" }}>
+
             <AppPageBodySection>
                 <Heading>Guide</Heading>
                 <Tabs variant="soft-rounded" colorScheme="green" >
                     <TabList my="16px">
-                        <Tab>Staking</Tab>
-                        <Tab>Create Pool</Tab>
-                   
-                        <Tab>Bridge</Tab>
-                        <Tab>Others</Tab>
+                        {guides.map((v, index) => {
+                            return <Tab key={index} onClick={() => {
+
+                                // setTabIndex(index);
+                            }}>{v}</Tab>
+                        })}
                     </TabList>
-                    <Divider />
+                    <TabPanels>
+                        <TabPanel>
+                            <p>one!</p>
+                        </TabPanel>
+                        <TabPanel>
+                            <p>two!</p>
+                        </TabPanel>
+                        <TabPanel>
+                            <p>one!</p>
+                        </TabPanel>
+                        <TabPanel>
+                            <p>two!</p>
+                        </TabPanel>
+                    </TabPanels>
                 </Tabs>
 
             </AppPageBodySection>

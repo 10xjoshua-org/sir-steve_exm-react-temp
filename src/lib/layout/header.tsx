@@ -11,7 +11,6 @@ import React from "react";
 import AppNavigation from "./navigation"
 import { Container, Row, Col } from "react-grid-system"
 import {
-
 } from "@chakra-ui/icons";
 
 interface PathItem {

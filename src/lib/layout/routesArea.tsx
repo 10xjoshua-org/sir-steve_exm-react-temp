@@ -4,6 +4,7 @@ import { Heading, Flex, Text, Input } from "@chakra-ui/react"
 import { Container } from "react-grid-system"
 import StackActivity from "../modules/stacking"
 import FarmingActivity from "../modules/farming"
+import BridgeActivity from "../modules/bridge"
 import CreatePoolActivity from "../modules/create_pool"
 import LabActivity from "../modules/lab"
 import GuideActivity from "../modules/guide"
@@ -11,6 +12,7 @@ const Screen: React.FC<{}> = () => {
 
     return <div >
         <Switch>
+            <Route path="/bridge" component={BridgeActivity} />
             <Route path="/farming" component={FarmingActivity} />
             <Route path="/create-pool" component={CreatePoolActivity} />
             <Route path="/lab" component={LabActivity} />
