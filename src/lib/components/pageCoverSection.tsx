@@ -5,7 +5,7 @@ import { Container } from "react-grid-system"
 export const AppPageCoverSection: React.FC<{ title: string, description?: string }> = ({ title, description }) => {
 
     return <div >
-        <Container style={{ padding: "16px 24px", background: "#b7e4c7" }} fluid>
+        <Container style={{ padding: "16px 24px", background: "transparent" }} fluid>
             <Flex minHeight={200} direction="column" justify="center" justifyItems="center" justifyContent="center">
                 <Heading size="3xl" fontWeight="extrabold">{title}</Heading>
                 {description??<Text fontSize="2xl">{description}</Text>}

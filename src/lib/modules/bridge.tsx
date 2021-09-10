@@ -35,7 +35,7 @@ const Screen: React.FC<{}> = () => {
                 </Tabs>
 
                 <div style={{ overflow: "hidden" }}>
-                    <Box m="auto" w={{ md: "50%" }} bg="white" p="24px" rounded="lg" boxShadow="lg" mb="24px">
+                    <Box m="auto" w={{ md: "50%" }} bg="rgba(200,200,200,.2)" p="24px" rounded="lg" boxShadow="lg" mb="24px">
                         <div>
                             <Text>Token</Text>
                             <Input disabled={false} placeholder="Search pools" />

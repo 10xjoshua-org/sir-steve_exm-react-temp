@@ -94,7 +94,7 @@ export const PoolsList: React.FC<{}> = () => {
 const PoolCard: React.FC<{ pool_props: { label: string, value: string }[] }> = ({ pool_props }) => {
 
     return <Box padding="12px" boxShadow="lg" rounded={"8px"} marginBottom="12px"
-        background="white"
+        background="rgba(10,100,100,.4)"
         overflow="hidden"
     >
         <Text fontSize="3xl" fontFamily="monospace">Pool name</Text>

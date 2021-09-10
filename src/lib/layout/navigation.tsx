@@ -11,7 +11,14 @@ import {
   IconButton,
   Box,
   DrawerCloseButton,
-  Heading
+  Heading,
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Flex,
+  HStack
 } from "@chakra-ui/react";
 import { Visible } from "react-grid-system"
 import React, { ReactSVG } from "react";
@@ -21,7 +28,7 @@ import {
   IoIosShuffle,
   IoIosPulse,
   IoIosApps,
-
+  IoIosSwap,
 } from "react-icons/io";
 import { useHistory } from 'react-router-dom'
 import {
@@ -51,35 +58,52 @@ const Uunc: React.FC<{ drawerOpen: boolean, closeDrawer: () => void }> = ({ draw
 
   const NavigationList: NavigationRootPathType[] = [
     {
+      label: "Trade",
+      icon: <IoIosSwap color="rgba(200,200,200,.5)" />,
+      path: "",
+      children: [
+        {
+          label: "Exchange",
+          icon: <IoIosApps color="rgba(200,200,200,.5)" />,
+          path: "/exchange"
+        },
+        {
+          label: "Liquidity",
+          icon: <IoIosApps color="rgba(200,200,200,.5)" />,
+          path: "/liquidity"
+        }
+      ]
+    },
+    {
       label: "Stacking",
-      icon: <IoIosApps color="#487457" />,
+      icon: <IoIosApps color="rgba(200,200,200,.5)" />,
       path: ""
     },
     {
       label: "Farming",
-      icon: <IoIosPulse color="#487457" />,
+      icon: <IoIosPulse color="rgba(200,200,200,.5)" />,
       path: "farming"
     },
 
     {
       label: "Create Pool",
-      icon: <IoIosBusiness color="#487457" />,
-      end: < AddIcon color="#487457" />,
+      icon: <IoIosBusiness color="rgba(200,200,200,.5)" />,
+      end: < AddIcon color="rgba(200,200,200,.5)" />,
       path: "create-pool"
     },
     {
       label: "Lab",
-      icon: <IoIosFlash color="#487457" />,
+      icon: <IoIosFlash color="rgba(200,200,200,.5)" />,
       path: "lab"
     },
     {
       label: "Bridge",
-      icon: <IoIosShuffle color="#487457" />,
+      icon: <IoIosShuffle color="rgba(200,200,200,.5)" />,
       path: "bridge"
     },
     {
       label: "Guide",
-      icon: <QuestionIcon color="#487457" />,
+      icon: <QuestionIcon color="rgba(200,200,200,.5)" />,
       path: "guide"
     },
   ];
@@ -87,38 +111,55 @@ const Uunc: React.FC<{ drawerOpen: boolean, closeDrawer: () => void }> = ({ draw
   const NavPathsHere = (
     <div>
       {NavigationList.map((v) => {
+        let containerStyle={
+          padding: "12px 12px",
+          borderRadius: 8,
+          marginBottom: 12,
+        }
+
+        if (v.children != undefined) {
+          let comp = (
+            <Menu>
+              <MenuButton as={Box} rightIcon={<ChevronDownIcon />} 
+               bg="rgba(100,100,100,.1)"
+              style={containerStyle}
+              _hover={{ background: "rgba(100,100,100,.5)", color: "white" }} >
+                 <HStack>
+                 {v.icon ?? <div></div>}
+                  <div>
+                    {v.label}
+                  </div>
+                   </HStack>
+              </MenuButton>
+              <MenuList>
+                {v.children.map((childPath)=>{
+                  return <MenuItem onClick={()=>{
+                    history.push(childPath.path);
+                  }}>{childPath.label}</MenuItem>
+                })}
+              </MenuList>
+            </Menu>
+          );
+          return comp;
+        }
         return (
-          <Box
-            background="grey"
+          <HStack
             onClick={() => {
               history.push(v.path);
             }}
-            _hover={{ background: "#E3E2E2", color: "white" }}
-            bg="#F6F7F7"
-            style={{
-              padding: "12px 12px",
-              borderRadius: 8,
-              marginBottom: 12,
-            }}
+            _hover={{ background: "rgba(100,100,100,.5)", color: "white" }}
+            bg="rgba(100,100,100,.1)"
+            style={containerStyle}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              {v.icon ?? <div></div>}
+             {v.icon ?? <div></div>}
               <Text
-                style={{ flex: 1, paddingLeft: 12 }}
+                style={{ flex: 1}}
                 fontWeight="bold"
-                color="#474646"
+                color="rgba(230,230,230,.7)"
               >
                 {v.label}
               </Text>
-              {v.end ?? <ChevronRightIcon />}
-            </div>
-          </Box>
+          </HStack>
         );
       })}
     </div>

@@ -5,14 +5,16 @@ import { Container } from "react-grid-system"
 import StackActivity from "../modules/stacking"
 import FarmingActivity from "../modules/farming"
 import BridgeActivity from "../modules/bridge"
+import ExchangeActivity from "../modules/exchange"
 import CreatePoolActivity from "../modules/create_pool"
 import LabActivity from "../modules/lab"
 import GuideActivity from "../modules/guide"
 const Screen: React.FC<{}> = () => {
 
-    return <div style={{backgroundColor:"#F7F7F7"}}>
+    return <div style={{}}>
         <Switch>
             <Route path="/bridge" component={BridgeActivity} />
+            <Route path="/exchange" component={ExchangeActivity} />
             <Route path="/farming" component={FarmingActivity} />
             <Route path="/create-pool" component={CreatePoolActivity} />
             <Route path="/lab" component={LabActivity} />
